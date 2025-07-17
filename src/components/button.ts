@@ -33,4 +33,6 @@ const Button = styled.button<{ $variant: "primary" | "secondary" }>`
   }
 `;
 
+Button.displayName = "Button";
+
 export default Button;
