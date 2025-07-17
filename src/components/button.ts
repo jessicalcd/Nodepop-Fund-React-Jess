@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const accentColor = "rgb(29, 161, 242)";
+const accentColor = "rgb(0, 209, 193)";
 
 const Button = styled.button<{ $variant: "primary" | "secondary" }>`
   cursor: pointer;
@@ -28,8 +28,8 @@ const Button = styled.button<{ $variant: "primary" | "secondary" }>`
   &:hover {
     background-color: ${(props) =>
       props.$variant === "primary"
-        ? "rgb(26, 145, 218)"
-        : "rgba(29, 161, 242, 0.1)"};
+        ? "rgb(64, 224, 208)"
+        : "rgba(0, 209, 193, 0.1)"};
   }
 `;
 
