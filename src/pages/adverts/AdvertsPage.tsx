@@ -6,12 +6,14 @@ import Button from "../../components/button";
 import { getLatestAdverts } from "./service";
 import { useEffect, useState } from "react";
 import type { Advert } from "./types";
+import { logout } from "../auth/service";
 
 interface AdvertsPageProps {
     active: boolean;
+    onLogout: () => void;
 }
 
-function AdvertsPage({ active }: AdvertsPageProps) {
+function AdvertsPage({ active, onLogout }: AdvertsPageProps) {
     const [adverts, setAdverts] = useState<Advert[]>([]);
 
     useEffect(() => {
@@ -21,8 +23,12 @@ function AdvertsPage({ active }: AdvertsPageProps) {
         }
         getAdverts();
     },[]);
-   
 
+    const handleLogoutClick = async () => {
+        await logout();
+        onLogout();
+    };
+   
     return (
         <div className={clsx(styles["adverts-page"], { active })}>
             <h1>
@@ -39,8 +45,8 @@ function AdvertsPage({ active }: AdvertsPageProps) {
                     </li>
                 ))}
             </ul>
-            <Button disabled={false} $variant="secondary">
-                Click me
+            <Button disabled={false} $variant="secondary" onClick={handleLogoutClick}>
+                Logout
             </Button>
         </div>
     );

@@ -4,14 +4,26 @@ import AdvertsPage from "./pages/adverts/AdvertsPage";
 
 
 
-function App() {
-  const [isLogged, setIsLogged] = useState(false);
+interface AppProps {
+  defaultIsLogged: boolean;
+}
+
+function App({ defaultIsLogged }: AppProps) {
+  const [isLogged, setIsLogged] = useState(defaultIsLogged);
 
   function handleLogin() {
     setIsLogged(true);
   }
 
-  return isLogged ? <AdvertsPage active /> : <LoginPage onLogin={handleLogin} />;
+    function handleLogout() {
+    setIsLogged(false);
+  }
+
+  return isLogged ? (
+    <AdvertsPage active onLogout={handleLogout} />
+  ) : (
+    <LoginPage onLogin={handleLogin} />
+  );
 }
 
 export default App;
