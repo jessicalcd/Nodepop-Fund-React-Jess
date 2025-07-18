@@ -1,3 +1,13 @@
-.adverts-page {
-    color: red;
+.adverts-page-empty {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 1.1rem;
+  color: #888;
+}
+
+.adverts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 600px;
 }

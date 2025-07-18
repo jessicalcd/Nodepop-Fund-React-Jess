@@ -1,17 +1,19 @@
 
 import "./AdvertsPage.css";
-import clsx from "clsx";
-import styles from "./AdvertsPage.module.css";
 import { getLatestAdverts } from "./service";
 import { useEffect, useState } from "react";
 import type { Advert } from "./types";
 import Layout from "../../components/layout/layout";
+import Button from "../../components/ui/button";
+import AdvertItem from "./AdevertItem";
 
-interface AdvertsPageProps {
-    active: boolean;
-}
+const EmptyList = () => (
+  <div className="adverts-page-empty">
+    <Button $variant="primary">Create advert</Button>
+  </div>
+);
 
-function AdvertsPage({ active }: AdvertsPageProps) {
+function AdvertsPage() {
     const [adverts, setAdverts] = useState<Advert[]>([]);
 
     useEffect(() => {
@@ -24,21 +26,18 @@ function AdvertsPage({ active }: AdvertsPageProps) {
    
     return (
         <Layout title="">
-            <div className={clsx(styles["adverts-page"], { active })}>
-                <h1>
-                    Adverts Page
-                </h1>
-                <ul>
-                    {adverts.map((advert) => (
-                        <li key={advert.id}>
-                            <h3>{advert.name}</h3>
-                            <p>Precio: {advert.price}€</p>
-                            <p>Tipo: {advert.sale ? 'Venta' : 'compra'}</p>
-                            <p>Tags: {advert.tags.join(', ')}</p>
-                            {advert.photo && <img src={advert.photo} alt={advert.name} width={100} />}
-                        </li>
-                    ))}
-                </ul>
+            <div className="adverts-page">
+                {adverts.length ? (
+                    <ul className="adverts-list">
+                        {adverts.map((advert) => (
+                            <li key={advert.id}>
+                                <AdvertItem advert={advert} />
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <EmptyList />
+                )}
             </div>
         </Layout>
     );

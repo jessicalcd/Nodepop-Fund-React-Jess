@@ -1,8 +1,12 @@
 import styled from "styled-components";
 
-const accentColor = "rgb(0, 209, 193)";
+const accentColor = "rgb(var(--color-nodepop))";
 
-const Button = styled.button<{ $variant: "primary" | "secondary" }>`
+interface ButtonProps {
+  $variant: "primary" | "secondary";
+}
+
+const Button = styled.button<ButtonProps>`
   cursor: pointer;
   border-radius: 9999px;
   background-color: ${(props) =>
@@ -29,7 +33,7 @@ const Button = styled.button<{ $variant: "primary" | "secondary" }>`
     background-color: ${(props) =>
       props.$variant === "primary"
         ? "rgb(64, 224, 208)"
-        : "rgba(0, 209, 193, 0.1)"};
+        : "rgba(var(--color-nodepop), 0.1)"};
   }
 `;
 

@@ -1,5 +1,7 @@
+import "./footer.css";
+
 function Footer() {
-  return <footer>@2025 Nodepop</footer>;
+  return <footer className="footer">@2025 Nodepop</footer>;
 }
 
 export default Footer;

@@ -1,0 +1,39 @@
+.advert-item {
+  cursor: pointer;
+  display: flex;
+  gap: 15px;
+  padding: 15px;
+  transition: background-color 0.2s;
+  border: 1px solid rgb(var(--color-border));
+  border-radius: 6px;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.advert-item:hover {
+  background-color: rgba(0, 209, 193, 0.08); /* turquesa claro al pasar el cursor */
+}
+
+.advert-item-content {
+  flex: 1;
+}
+
+.advert-item h3 {
+  color: #333;
+  margin: 0 0 8px;
+  font-size: 1.2rem;
+}
+
+.advert-item p {
+  margin: 4px 0;
+  color: #555;
+}
+
+/* Imagen del anuncio */
+.advert-item img {
+  object-fit: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
