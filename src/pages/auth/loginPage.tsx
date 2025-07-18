@@ -1,16 +1,21 @@
+import "./LoginPage.css";
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import Button from "../../components/ui/button";
 import { login } from "./service";
 import { useAuth } from "./context";
+import FormField from "../../components/ui/FormField";
+import { useLocation, useNavigate } from "react-router";
 
 function LoginPage() {
-  const { onLogin } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { onLogin } = useAuth();
     const [credentials, setCredentials] = useState({
         email: "",
         password: "",
     });
     const { email: email, password } = credentials;
-    const disabled = !email || !password;
+    const isDisabled = !email || !password;
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
         setCredentials((prevCredentials) => ({
@@ -19,39 +24,44 @@ function LoginPage() {
         }));
     }
 
+    console.log(location);
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         try {
             await login(credentials);
             onLogin();
+            // Navigate to the page in state.from
+            const to = location.state?.from ?? "/";
+            navigate(to, { replace: true });
         } catch (error) {
             console.error(error);
         }
     }
 
     return (
-        <div>
-            <h1>Login</h1>
+        <div  className="login-page">
+            <h1 className="login-page-title">Login</h1>
             <form onSubmit={handleSubmit}>
-                <label>
-                    Email:
-                    <input
-                        type="text" 
-                        name="email"
-                        value={email}
-                        onChange={handleChange} 
-                    />
-                </label>
-                <label>
-                    Password:
-                    <input 
-                        type="password"
-                        name="password"
-                        value={password}
-                        onChange={handleChange}
-                    />
-                </label>
-                <Button type="submit" $variant="primary" disabled={disabled}>
+                <FormField
+                    type="text"
+                    name="email"
+                    label="email"
+                    value={email}
+                    onChange={handleChange}
+                />
+                <FormField
+                    type="password"
+                    name="password"
+                    label="password"
+                    value={password}
+                    onChange={handleChange}
+                />
+                <Button
+                    type="submit"
+                    $variant="primary"
+                    disabled={isDisabled}
+                    className="login-form-submit"
+                >
                     Login
                 </Button>
             </form>

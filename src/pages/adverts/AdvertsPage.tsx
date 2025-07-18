@@ -3,9 +3,10 @@ import "./AdvertsPage.css";
 import { getLatestAdverts } from "./service";
 import { useEffect, useState } from "react";
 import type { Advert } from "./types";
-import Layout from "../../components/layout/layout";
 import Button from "../../components/ui/button";
 import AdvertItem from "./AdevertItem";
+import Page from "../../components/layout/page";
+import { Link } from "react-router";
 
 const EmptyList = () => (
   <div className="adverts-page-empty">
@@ -25,13 +26,15 @@ function AdvertsPage() {
     },[]);
    
     return (
-        <Layout title="">
+        <Page title="">
             <div className="adverts-page">
                 {adverts.length ? (
                     <ul className="adverts-list">
                         {adverts.map((advert) => (
                             <li key={advert.id}>
-                                <AdvertItem advert={advert} />
+                                <Link to={`/adverts/${advert.id}`}>
+                                    <AdvertItem advert={advert} />
+                                </Link>
                             </li>
                         ))}
                     </ul>
@@ -39,7 +42,7 @@ function AdvertsPage() {
                     <EmptyList />
                 )}
             </div>
-        </Layout>
+        </Page>
     );
 }
 

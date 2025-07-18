@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import Button from "../../components/ui/button";
 import { useAuth } from "../../pages/auth/context";
 import { logout } from "../../pages/auth/service";
@@ -13,6 +14,8 @@ export default function AuthButton() {
       Logout
     </Button>
   ) : (
-    <Button $variant="primary">Login</Button>
+    <Button $variant="primary" as={Link} to="/login">
+      Login
+    </Button>
   );
 }
