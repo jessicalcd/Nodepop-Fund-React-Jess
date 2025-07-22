@@ -24,17 +24,19 @@ function NewAdvertPage() {
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value, files, type } = e.target;
+    const target = e.target as HTMLInputElement;
+    const { name, value, type } = target;
 
     if (type === "file") {
-      setForm({ ...form, photo: files?.[0] });
+      setForm({ ...form, photo: target.files?.[0] });
     } else if (name === "tags") {
-      const selected = Array.from((e.target as HTMLSelectElement).selectedOptions).map(opt => opt.value);
-      setForm({ ...form, tags: selected });
-    } else {
-      setForm({ ...form, [name]: value });
-    }
-  };
+      const select = e.target as HTMLSelectElement;
+      const selected = Array.from(select.selectedOptions).map(opt => opt.value);
+    setForm({ ...form, tags: selected });
+  } else {
+    setForm({ ...form, [name]: value });
+  }
+};
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
