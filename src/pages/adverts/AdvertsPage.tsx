@@ -39,12 +39,12 @@ function AdvertsPage() {
   }, [filters]);
 
   return (
-    <Page title="Listado de anuncios">
+    <Page title="Last Adverts">
       <div className="adverts-page">
         <AdvertsFilter filters={filters} availableTags={tags} onChange={setFilters} />
 
         {loading ? (
-          <p className="loading-message">Cargando anuncios...</p>
+          <p className="loading-message">Loading advert...</p>
         ) : adverts.length ? (
           <ul className="adverts-list">
             {adverts.map((advert) => (

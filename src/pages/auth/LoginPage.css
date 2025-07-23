@@ -38,3 +38,14 @@
   margin-top: 10px;
   text-align: center;
 }
+
+.login-form-remember {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.login-form-remember input[type="checkbox"] {
+  margin-right: 8px;
+}

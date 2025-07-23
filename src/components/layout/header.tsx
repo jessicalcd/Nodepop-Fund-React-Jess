@@ -14,7 +14,7 @@ function Header() {
       </Link>
       <nav className="header-nav">
         <NavLink to="/adverts" className="header-link">
-          Last Adverds
+          Last Adverts
         </NavLink>
         <NavLink to="/adverts/new" className="header-link">
           New Adverts

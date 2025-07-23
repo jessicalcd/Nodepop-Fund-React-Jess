@@ -41,7 +41,7 @@ function NewAdvertPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!form.name || !form.price || !form.tags.length) {
-      setError("Todos los campos excepto la foto son obligatorios.");
+      setError("All fields except the photo are required.");
       return;
     }
 
@@ -55,14 +55,14 @@ function NewAdvertPage() {
       });
       navigate(`/adverts/${created.id}`);
     } catch (err) {
-      setError("Error al crear el anuncio.");
+      setError("Error creating advert.");
     }
   };
 
   const isValid = form.name && form.price && form.tags.length;
 
   return (
-    <Page title="Crear nuevo anuncio">
+    <Page title="Create new advert">
       <div className="new-advert-page">
         <form className="new-advert-page-form" onSubmit={handleSubmit}>
           <input name="name" placeholder="Nombre" value={form.name} onChange={handleChange} required />
@@ -86,7 +86,7 @@ function NewAdvertPage() {
 
           <div className="new-advert-page-footer">
             <Button type="submit" className="new-advert-page-submit" $variant="primary" disabled={!isValid}>
-              Crear anuncio
+              Create Advert
             </Button>
           </div>
         </form>

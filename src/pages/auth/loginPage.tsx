@@ -1,11 +1,12 @@
 import "./LoginPage.css";
-import { useState, type ChangeEvent, type FormEvent } from "react";
+import { useState, useEffect, type ChangeEvent, type FormEvent } from "react";
 import Button from "../../components/ui/button";
 import { login } from "./service";
 import { useAuth } from "./context";
 import FormField from "../../components/ui/FormField";
 import { useLocation, useNavigate } from "react-router";
 import { AxiosError } from "axios";
+import storage from "../../utils/storage";
 
 function LoginPage() {
     const location = useLocation();
@@ -17,8 +18,27 @@ function LoginPage() {
     });
     const [error, setError] = useState<{ message: string } | null>(null);
     const [isFetching, setIsFetching] = useState(false);
+    const [rememberMe, setRememberMe] = useState(false);
     const { email: email, password } = credentials;
     const isDisabled = !email || !password || isFetching;
+
+    useEffect(() => {
+    const authData = storage.get("auth");
+        if (authData) {
+        try {
+            const parsed = JSON.parse(authData);
+            if (parsed.remember && parsed.email) {
+            setRememberMe(true);
+            setCredentials((prev) => ({
+                ...prev,
+                email: parsed.email,
+            }));
+            }
+        } catch (e) {
+            storage.remove("auth");
+        }
+        }
+    }, []);
 
     function handleChange(event: ChangeEvent<HTMLInputElement>) {
         setCredentials((prevCredentials) => ({
@@ -34,6 +54,16 @@ function LoginPage() {
             setIsFetching(true);
             await login(credentials);
             onLogin();
+
+            if (rememberMe) {
+                const authInfo = JSON.stringify({
+                remember: true,
+                email: credentials.email,
+                });
+                storage.set("auth", authInfo);
+            } else {
+                storage.remove("auth");
+            }
             
             const to = location.state?.from ?? "/";
             navigate(to, { replace: true });
@@ -66,6 +96,15 @@ function LoginPage() {
                     value={password}
                     onChange={handleChange}
                 />
+                <label className="login-form-remember">
+                    <input
+                        type="checkbox"
+                        checked={rememberMe}
+                        onChange={() => setRememberMe((prev) => !prev)}
+                    />
+                    Recordar contraseña
+                    </label>
+
                 <Button
                     type="submit"
                     $variant="primary"

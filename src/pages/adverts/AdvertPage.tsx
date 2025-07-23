@@ -44,26 +44,26 @@ function AdvertPage() {
   return (
     <Page title="Advert detail">
       {loading ? (
-        <p className="loading-message">Cargando anuncio...</p>
+        <p className="loading-message">Loading advert...</p>
       ) : advert ? (
         <>
           <AdvertItem advert={advert} />
 
           <div className="advert-page-actions">
             <Button $variant="secondary" onClick={() => setShowConfirm(true)}>
-              Eliminar anuncio
+              Delete Advert
             </Button>
           </div>
 
           <ConfirmDialog
             open={showConfirm}
-            message="¿Seguro que deseas borrar este anuncio?"
+            message="¿Are you sure you want to delete this advert?"
             onConfirm={handleDelete}
             onCancel={() => setShowConfirm(false)}
           />
         </>
       ) : (
-        <p className="form-error">El anuncio no existe o falló la carga.</p>
+        <p className="form-error">The advert does not exist or loading failed.</p>
       )}
     </Page>
   );
