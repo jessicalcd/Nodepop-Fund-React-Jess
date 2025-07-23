@@ -1,0 +1,22 @@
+.not-found-page {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.not-found-title {
+  font-size: 3rem;
+  color: rgb(var(--color-danger));
+}
+
+.not-found-text {
+  margin: 1rem 0;
+  color: rgb(var(--color-secondary-text));
+}
+
+.not-found-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: rgb(var(--color-nodepop));
+  font-weight: bold;
+  text-decoration: underline;
+}
