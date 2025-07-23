@@ -1,69 +1,37 @@
-# React + TypeScript + Vite
+# Práctica React: Frontend para Nodepop
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
 
-Currently, two official plugins are available:
+Aplicación frontend tipo dashboard desarrollada con React para interactuar con una API de anuncios (Nodepop). Permite gestionar usuarios y anuncios. Proyecto realizado como práctica de fundamentos de React.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Backend
 
-## Expanding the ESLint configuration
+Esta aplicación frontend se conecta a un backend tipo Nodepop que debe estar corriendo localmente, usualmente en `http://localhost:3001`.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default tseslint.config([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
+## Funcionalidades Principales
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+  * Autenticación de usuarios: Login, Registro, Logout.
+  * Persistencia de sesión con "Recordar contraseña".
+  * Visualización de datos del usuario logueado.
+  * CRUD de Anuncios:
+      * Listado de anuncios.
+      * Filtros por nombre, tipo (compra/venta) y tags.
+      * Creación de nuevos anuncios (con subida de foto opcional).
+      * Vista de detalle de anuncios.
+      * Borrado de anuncios con confirmación.
+  * Enrutado protegido y página 404.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+## Cómo Ejecutar el Frontend
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from "eslint-plugin-react-x";
-import reactDom from "eslint-plugin-react-dom";
-
-export default tseslint.config([
-  globalIgnores(["dist"]),
-  {
-    files: ["**/*.{ts,tsx}"],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs["recommended-typescript"],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+1.  **Clona/Descarga el proyecto.**
+2.  **Asegúrate de que el backend esté corriendo** en `http://localhost:3001`.
+3.  **Instala las dependencias:**
+    ```bash
+    npm install
+    ```
+4.  **Inicia el servidor de desarrollo:**
+    ```bash
+    npm run dev
+    ```
+    La aplicación estará disponible en `http://localhost:5173` (o el puerto que indique Vite).
