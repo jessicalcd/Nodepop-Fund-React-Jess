@@ -1,13 +1,17 @@
-import "./photo.css";
 import clsx from "clsx";
-import defaultPhoto from "../../assets/wallapop-svgrepo-com (1).svg";
-import type { ComponentProps } from "react";
+import cameraPlaceholder from "../../assets/8666672_camera_icon.svg";
 
-const Photo = ({ className, alt, src, ...props }: ComponentProps<"img">) => (
+interface PhotoProps extends React.ComponentProps<"img"> {
+  src?: string;
+  alt?: string;
+  className?: string;
+}
+
+const Photo = ({ src, alt, className, ...props }: PhotoProps) => (
   <img
     className={clsx("photo", className)}
-    src={src ?? defaultPhoto}
-    alt={alt ?? "photo"}
+    src={src || cameraPlaceholder}
+    alt={alt || "foto del anuncio"}
     {...props}
   />
 );

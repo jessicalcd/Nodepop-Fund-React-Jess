@@ -15,18 +15,24 @@ function AdvertPage() {
   const [advert, setAdvert] = useState<Advert | null>(null);
   const navigate = useNavigate();
   const [showConfirm, setShowConfirm] = useState(false);
+  const [loading, setLoading] = useState(true);
+ 
 
   useEffect(() => {
     if (!advertId) {
       return;
     }
+    setLoading(true);
     getAdvert(advertId)
       .then(setAdvert)
       .catch((error) => {
         if (error instanceof AxiosError && error.response?.status === 404) {
           navigate("/not-found", { replace: true });
         }
-      });
+      })
+      .finally(() => {
+      setLoading(false); 
+    });
   }, [advertId, navigate]);
 
   const handleDelete = async () => {
@@ -37,7 +43,9 @@ function AdvertPage() {
 
   return (
     <Page title="Advert detail">
-      {advert ? (
+      {loading ? (
+        <p className="loading-message">Cargando anuncio...</p>
+      ) : advert ? (
         <>
           <AdvertItem advert={advert} />
 
@@ -55,7 +63,7 @@ function AdvertPage() {
           />
         </>
       ) : (
-        <p>Cargando anuncio...</p>
+        <p className="form-error">El anuncio no existe o falló la carga.</p>
       )}
     </Page>
   );

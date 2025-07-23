@@ -1,5 +1,6 @@
 import type { Advert } from "./types";
 import "./AdvertItem.css";
+import Photo from "../../components/ui/photo";
 
 
 interface AdvertItemProps {
@@ -16,7 +17,7 @@ const AdvertItem = ({ advert }: AdvertItemProps) => {
         <p>Precio: {price}€</p>
         <p>Tipo: {sale ? "Venta" : "Compra"}</p>
         <p>Tags: {tags.join(", ")}</p>
-        {photo && <img src={photo} alt={name} width={100} />}
+        <Photo src={photo} alt={name} width={100} />
       </div>
     </article>
   );

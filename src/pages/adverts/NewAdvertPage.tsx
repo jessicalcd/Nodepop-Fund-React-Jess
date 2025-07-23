@@ -82,7 +82,7 @@ function NewAdvertPage() {
 
           <input type="file" name="photo" onChange={handleChange} />
 
-          {error && <p style={{ color: "red" }}>{error}</p>}
+          {error && <div className="form-error">{error}</div>}
 
           <div className="new-advert-page-footer">
             <Button type="submit" className="new-advert-page-submit" $variant="primary" disabled={!isValid}>

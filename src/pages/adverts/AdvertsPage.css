@@ -67,3 +67,10 @@
   max-width: 100px;
   margin-top: 6px;
 }
+
+.loading-message {
+  text-align: center;
+  color: rgb(var(--color-nodepop));
+  font-weight: bold;
+  margin: 2rem auto;
+}

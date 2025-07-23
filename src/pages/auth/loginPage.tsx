@@ -27,14 +27,14 @@ function LoginPage() {
         }));
     }
 
-    //console.log(location);
+    
     async function handleSubmit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         try {
             setIsFetching(true);
             await login(credentials);
             onLogin();
-            // Navigate to the page in state.from
+            
             const to = location.state?.from ?? "/";
             navigate(to, { replace: true });
         } catch (error) {
@@ -77,7 +77,7 @@ function LoginPage() {
             </form>
             {error && (
                 <div
-                    className="login-page-error"
+                    className="form-error"
                     role="alert"
                     onClick={() => {
                         setError(null);

@@ -3,3 +3,21 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.loading-message {
+  color: rgb(var(--color-nodepop));
+  font-weight: bold;
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.form-error {
+  background-color: rgba(var(--color-danger), 0.1);
+  color: rgb(var(--color-danger));
+  padding: 1rem;
+  margin: 2rem;
+  border: 1px solid rgba(var(--color-danger), 0.4);
+  border-radius: 5px;
+  text-align: center;
+}
+

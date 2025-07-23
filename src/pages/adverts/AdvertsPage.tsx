@@ -26,13 +26,16 @@ function AdvertsPage() {
     tags: [],
   });
   const [tags, setTags] = useState<string[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     getTags().then(setTags);
   }, []);
 
   useEffect(() => {
-    getFilteredAdverts(filters).then(setAdverts);
+    setLoading(true);
+    getFilteredAdverts(filters).then(setAdverts).finally(() => setLoading(false));;
   }, [filters]);
 
   return (
@@ -40,7 +43,9 @@ function AdvertsPage() {
       <div className="adverts-page">
         <AdvertsFilter filters={filters} availableTags={tags} onChange={setFilters} />
 
-        {adverts.length ? (
+        {loading ? (
+          <p className="loading-message">Cargando anuncios...</p>
+        ) : adverts.length ? (
           <ul className="adverts-list">
             {adverts.map((advert) => (
               <li key={advert.id}>

@@ -28,3 +28,13 @@
   margin-top: 10px;
   width: 100%;
 }
+
+.form-error {
+  background-color: rgba(var(--color-danger), 0.1);
+  border: 1px solid rgba(var(--color-danger), 0.2);
+  border-radius: 5px;
+  color: rgb(var(--color-danger));
+  padding: 10px 15px;
+  margin-top: 10px;
+  text-align: center;
+}
