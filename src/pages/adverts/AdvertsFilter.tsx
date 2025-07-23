@@ -26,8 +26,6 @@ function AdvertsFilter({ filters, availableTags, onChange }: AdvertsFilterProps)
         <option value="true">Venta</option>
         <option value="false">Compra</option>
       </select>
-      <input type="number" name="priceMin" placeholder="Precio mínimo" value={filters.priceMin} onChange={handleInput} />
-      <input type="number" name="priceMax" placeholder="Precio máximo" value={filters.priceMax} onChange={handleInput} />
       <select name="tags" multiple value={filters.tags} onChange={handleMultiSelect}>
         {availableTags.map(tag => (
           <option key={tag}>{tag}</option>
@@ -38,5 +36,6 @@ function AdvertsFilter({ filters, availableTags, onChange }: AdvertsFilterProps)
 }
 
 export default AdvertsFilter;
+
 
 

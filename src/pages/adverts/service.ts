@@ -42,13 +42,10 @@ export const getFilteredAdverts = async (filters: AdvertsFilters) => {
   const params = new URLSearchParams();
   if (filters.name) params.append("name", filters.name);
   if (filters.sale) params.append("sale", filters.sale);
-  if (filters.priceMin || filters.priceMax) {
-    params.append("price", `${filters.priceMin || 0}-${filters.priceMax || 100000}`);
-  }
   if (filters.tags.length) {
-    params.append("tags", filters.tags.join(","));
-  }
-
+  params.append("tags", filters.tags.join(","));
+}
+  
   const res = await client.get<Advert[]>(`${ADVERTS_URL}?${params.toString()}`);
   return res.data;
 };

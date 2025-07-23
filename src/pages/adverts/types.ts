@@ -16,8 +16,6 @@ export interface Advert {
 export interface AdvertsFilters {
   name: string;
   sale: string;
-  priceMin: string;
-  priceMax: string;
   tags: string[];
 }
 

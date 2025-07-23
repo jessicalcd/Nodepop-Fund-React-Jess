@@ -21,8 +21,6 @@ function AdvertsPage() {
     const [filters, setFilters] = useState<AdvertsFilters>({
     name: "",
     sale: "",
-    priceMin: "",
-    priceMax: "",
     tags: [],
   });
   const [tags, setTags] = useState<string[]>([]);
