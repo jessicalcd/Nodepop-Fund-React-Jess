@@ -13,7 +13,7 @@ export const getLatestAdverts = async () => {
 
 export const getAdvert = async (advertId: string) => {
   const url = `${ADVERTS_URL}/${advertId}`;
-  const response = await client.get<Advert[]>(url);
+  const response = await client.get<Advert>(url);
   return response.data;
 };
 
@@ -51,4 +51,8 @@ export const getFilteredAdverts = async (filters: AdvertsFilters) => {
 
   const res = await client.get<Advert[]>(`${ADVERTS_URL}?${params.toString()}`);
   return res.data;
+};
+
+export const deleteAdvert = async (advertId: string) => {
+  await client.delete(`${ADVERTS_URL}/${advertId}`);
 };

@@ -1,13 +1,69 @@
+.adverts-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 0;
+  background: #fff;
+}
+
+.adverts-list {
+  width: 100%;
+  max-width: 460px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.adverts-list li {
+  margin-bottom: 24px;
+}
+
+.advert-item-card {
+  background: #fafbfc;
+  border: 1px solid #e8e9ea;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 28px 25px 18px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .adverts-filter {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 20px;
+  background: #fafbfc;
+  border: 1px solid #e8e9ea;
+  border-radius: 12px;
+  padding: 16px;
+  max-width: 460px;
+  width: 100%;
 }
 
 .adverts-filter input,
 .adverts-filter select {
-  padding: 6px 10px;
+  padding: 8px 14px;
   border-radius: 6px;
-  border: 1px solid rgb(var(--color-border));
+  border: 1px solid #e8e9ea;
+  background: #f8f9fa;
+  font-size: 16px;
+}
+
+.page-title, .adverts-title {
+  margin-bottom: 32px;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.adverts-page-empty {
+  padding: 40px 0;
+  text-align: center;
+}
+
+.advert-item-card img {
+  border-radius: 4px;
+  max-width: 100px;
+  margin-top: 6px;
 }

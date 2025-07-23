@@ -4,7 +4,7 @@ import NewAdvertPage from "./pages/adverts/NewAdvertPage";
 import { Navigate, Route, Routes } from "react-router";
 import Layout from "./components/layout/layout";
 import RequireAuth from "./pages/auth/RequireAuth";
-import AdvertPage from "./pages/adverts/AdvertsPage";
+import AdvertPage from "./pages/adverts/AdvertPage";
 
 
 function App() {
