@@ -65,7 +65,7 @@ function NewAdvertPage() {
     <Page title="Create new advert">
       <div className="new-advert-page">
         <form className="new-advert-page-form" onSubmit={handleSubmit}>
-          <input name="name" placeholder="Nombre" value={form.name} onChange={handleChange} required />
+          <input type="text" name="name" placeholder="Nombre" value={form.name} onChange={handleChange} required />
 
           <select name="sale" value={form.sale} onChange={handleChange}>
             <option value="true">Venta</option>
