@@ -13,8 +13,12 @@ function Header() {
         </div>
       </Link>
       <nav className="header-nav">
-        <NavLink to="/adverts/new">New Advert</NavLink>
-        <NavLink to="/adverts">Latest Adverts</NavLink>
+        <NavLink to="/adverts" className="header-link">
+          Last Adverds
+        </NavLink>
+        <NavLink to="/adverts/new" className="header-link">
+          New Adverts
+        </NavLink>
         <AuthButton />
       </nav>
     </header>
